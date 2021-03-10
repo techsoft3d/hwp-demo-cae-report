@@ -29,7 +29,7 @@ CAE_report.prototype._loadParameters = function (modelName) {
     var _this = this;
     
     return new Promise(function (resolve, reject) {
-        var fileName = "json/" + _this._modelName + ".json";
+        var fileName = "/demos/cae-report/json/" + _this._modelName + ".json";
         $.get(fileName).done(function(data, textStatus, jqXHR){
             $.getJSON(fileName, function (data) {
                 if (data.header) {
@@ -244,11 +244,23 @@ CAE_report.prototype._createViewer = function (modelName, models, containerId) {
             if (_this._defaultCamera != undefined) {
                 _this._viewer.getView().setCamera(Communicator.Camera.construct(_this._defaultCamera));
             }
+
+            loadModel();
         }
         
         function modelStructureReadyFunc() {
             ColorContour(_this._viewer, 25, 400);
             _this._viewer.getView().setPointSize(0, Communicator.PointSizeUnit.ScreenPixels);
+        }
+
+        function loadModel() {
+            _this._viewer.model.clear().then(() => {
+                const modelNodeId = _this._viewer.model.createNode(null, modelName);
+                _this._viewer.model.loadSubtreeFromScsFile(modelNodeId, "/data/" + modelName + ".scs")
+                    .then(() => {
+                        _this._viewer.view.fitWorld();
+                    });
+            });
         }
         
         _this._viewer.setCallbacks({
@@ -266,10 +278,5 @@ CAE_report.prototype._createViewer = function (modelName, models, containerId) {
         
         var OM = _this._viewer.operatorManager;
         OM.push(tooltipHandle);
-
-        var token = hwv._params.endpointUri.split("=")[1];
-        $(window).bind('beforeunload', function () { 
-            $.get('/api/delete_token?token=' + [token]); 
-        });
     });
 }
