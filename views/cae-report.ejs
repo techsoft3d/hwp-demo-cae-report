@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<%- include('../partials/google_analytics') %>
+    <script type="text/javascript" src="/javascripts/google_analytics.js"></script>
+    <script type="text/javascript" src="/javascripts/communicator_scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery-ui-1.9.2.custom.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+
+    <script>
+      const HWP_VERSION = '<%- process.env.HWP_VERSION %>';
+      const STREAM_CACHE_API= '<%- process.env.STREAM_CACHE_API %>';
+      const HWP_ENGINE_PATH = '<%- process.env.HWP_ENGINE_PATH %>';
+      const HWP_VIEWER_PATH = '<%- process.env.HWP_VIEWER_PATH %>';
+    </script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/techsoft3d/hoops-web-viewer@2021.0.0/hoops_web_viewer.js?v=2021.0.0"></script>
+
+    <script type="text/javascript" src="/javascripts/communicator_scripts/web_viewer_ui.js?v=2021.0.0" id="hwvUI"></script>
+
+    <script type="module" src="/demos/cae-report/javascripts/cae.js?v=1374a67"></script>
+    <script type="text/javascript" src="/demos/cae-report/javascripts/operators.js?v=1374a67"></script>
+    <script type="text/javascript" src="/demos/cae-report/javascripts/color_contour.js?v=1374a67"></script>
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/jquery-ui-1.9.2.custom.min.css">
+    <link rel="stylesheet" href="/demos/cae-report/stylesheets/custom.css">
+
+    <script type="module">
+        import CAE_report from '/demos/cae-report/javascripts/cae.js';
+
+        const CAEViewer = new CAE_report();
+        CAEViewer.start("con-rod");
+    </script>
+</head>
+</head>
+
+<body>
+    <p></p>
+    <div id="mainContainer" class="container" style="background-color :#232323">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="header">
+                    <tr>
+                        <td rowspan=3 width="30%"><img id="logoImg" src="/demos/cae-report/images/logo.png" width="100%"
+                                height="auto"></td>
+                        <td rowspan=3 width="40%" align="center" style="font-size : 24px; font-weight: bolder">Analysis
+                            Report</td>
+                        <td width="15%" class="tableLabel">Report Date:</td>
+                        <td width="15%" class="tableValue headerDate"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableLabel">Report Num:</td>
+                        <td class="tableValue headerNum"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableLabel">Author:</td>
+                        <td class="tableValue headerAuthor"></td>
+                    </tr>
+                </table>
+                <hr style="border:0;border-top:1px solid #FFFFFF;">
+            </div>
+        </div>
+        <div class="row">
+            <div id="a" class="col-md-8">
+                <div id="container"></div>
+            </div>
+            <div id="b" class="col-md-4">
+                <table class="report">
+                    <tr>
+                        <td colspan=3 height="5"></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3 class="tableGr">MAXIMUM VON MISES STRESS (Mpa)</td>
+                    </tr>
+                    <tr>
+                        <td class="tableLabel">Node no.</td>
+                        <td class="tableLabel">Stress</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="tableValue"><input class="bt" id="misesNode" data-id="0" type="button"></td>
+                        <td class="tableValue"><input class="bt" id="misesStress" data-id="0" type="button"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3 height="5"></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3 class="tableGr">MAXIMUM TRESCA STRESS (Mpa)</td>
+                    </tr>
+                    <tr>
+                        <td class="tableLabel">Node no.</td>
+                        <td class="tableLabel">Stress</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="tableValue"><input class="bt" id="trescaNode" data-id="1" type="button"></td>
+                        <td class="tableValue"><input class="bt" id="trescaStress" data-id="1" type="button"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3 height="5"></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3 class="tableGr">MAXIMUM PRINCIPLE STRESS (Mpa)</td>
+                    </tr>
+                    <tr>
+                        <td class="tableLabel">Stress</td>
+                        <td class="tableLabel">Node no.</td>
+                        <td class="tableLabel">Stress</td>
+                    </tr>
+                    <tr>
+                        <td class="tableValue"><input class="bt" value="Signam 1" data-id="2" type="button"></td>
+                        <td class="tableValue"><input class="bt" id="principleNode1" data-id="2" type="button"></td>
+                        <td class="tableValue"><input class="bt" id="principleStress1" data-id="2" type="button"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableValue"><input class="bt" value="Signam 2" data-id="3" type="button"></td>
+                        <td class="tableValue"><input class="bt" id="principleNode2" data-id="3" type="button"></td>
+                        <td class="tableValue"><input class="bt" id="principleStress2" data-id="3" type="button"></td>
+                    </tr>
+                    <tr>
+                        <td class="tableValue"><input class="bt" value="Signam 3" data-id="4" type="button"></td>
+                        <td class="tableValue"><input class="bt" id="principleNode3" data-id="4" type="button"></td>
+                        <td class="tableValue"><input class="bt" id="principleStress3" data-id="4" type="button"></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3 height="5"></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3 class="tableGr">MAXIMUM PRINCIPLE STRAIN (mm)</td>
+                    </tr>
+                    <tr>
+                        <td class="tableLabel">Node no.</td>
+                        <td class="tableLabel">Strain</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="tableValue"><input class="bt" id="principleNode" data-id="5" type="button"></td>
+                        <td class="tableValue"><input class="bt" id="principleStrain" data-id="5" type="button"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3 height="5"></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3><img src="/demos/cae-report/images/graph.png" width="100%" height="auto"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr style="border:0;border-top:1px solid #FFFFFF;">
+                <table>
+                    <tr>
+                        <th>REPORT CONSIDERATIONS</th>
+                    </tr>
+                    <tr>
+                        <td class="tableValue">For max Von Mises stress,Tresca stress, principal stress and principle
+                            strain, all measurements resulted in staying within the limits of its criteria. Any problem
+                            would not be found on this planning however, the more decrease of stress can be expected by
+                            increasing flexure on curved section in the stress concentration area.</td>
+                    </tr>
+                </table>
+                <hr style="border:0;border-top:1px solid #FFFFFF;">
+                <table>
+                    <tr>
+                        <td id="footer">PRO-Vida Inc., Yokohama, Kanagawa 220-0004, Japan<br>TEL 81-45-900-9876.
+                            www.pro-vida-inc-.com<br>© Tech Soft 3D All Rights Reserved</td>
+                    </tr>
+                </table>
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    <div id="colorTitle">Von Mises (MPa)</div>
+    <div id="colorLabel0" class="colorLabel"></div>
+    <div id="colorLabel1" class="colorLabel"></div>
+    <div id="colorLabel2" class="colorLabel"></div>
+    <div id="colorLabel3" class="colorLabel"></div>
+    <div id="colorLabel4" class="colorLabel"></div>
+    <div id="colorLabel5" class="colorLabel"></div>
+    <div id="colorLabel6" class="colorLabel"></div>
+    <div id="colorLabel7" class="colorLabel"></div>
+    <div id="colorLabel8" class="colorLabel"></div>
+    <div id="colorLabel9" class="colorLabel"></div>
+    <div id="colorLabel10" class="colorLabel"></div>
+    <div id="colorLabel11" class="colorLabel"></div>
+    <div id="colorLabel12" class="colorLabel"></div>
+    <div id="colorLabel13" class="colorLabel"></div>
+    <div id="colorLabel14" class="colorLabel"></div>
+    <div id="colorLabel15" class="colorLabel"></div>
+
+    <div id="results">
+        <div id="result0"></div>
+        <div id="result1"></div>
+        <div id="result2"></div>
+        <div id="result3"></div>
+        <div id="result4"></div>
+        <div id="result5"></div>
+        <div id="result6"></div>
+    </div>
+
+    <button id="deleteAnnot" class="button">Delete Annotations</button><br>
+
+    <button id="testBtn1" class="debug" style="display: none;">Test1</button><br>
+</body>
+
+</html>
