@@ -28,11 +28,11 @@ const createViewer = (modelName, models, containerId, hwp_version) => {
     return new Promise(function (resolve, reject) {
         const viewer = new Communicator.WebViewer({
             containerId: containerId,
-            empty: true,
+            // empty: true,
             // endpointUri: data.endpoint_uri,
             // model: modelName,
-            // boundingPreviewMode: "none",
-            // enginePath: HWP_ENGINE_PATH
+            boundingPreviewMode: "none",
+            enginePath: HWP_ENGINE_PATH
         });
 
         resolve(viewer);

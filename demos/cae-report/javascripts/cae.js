@@ -249,23 +249,27 @@ CAE_report.prototype._createViewer = function (modelName, models, containerId) {
         }
         
         function modelStructureReadyFunc() {
+            console.log("structure ready");
             ColorContour(_this._viewer, 25, 400);
             _this._viewer.getView().setPointSize(0, Communicator.PointSizeUnit.ScreenPixels);
         }
 
         function loadModel() {
+            console.log("load model");
             _this._viewer.model.clear().then(() => {
+                console.log("model loaded");
                 const modelNodeId = _this._viewer.model.createNode(null, modelName);
                 _this._viewer.model.loadSubtreeFromScsFile(modelNodeId, "/data/" + modelName + ".scs")
                     .then(() => {
                         _this._viewer.view.fitWorld();
+                        modelStructureReadyFunc();
                     });
             });
         }
         
         _this._viewer.setCallbacks({
             sceneReady: sceneReadyFunc,
-            modelStructureReady: modelStructureReadyFunc,
+            modelStructureReady: function() {},
         });
         
         var tt = new Tooltip(_this._viewer, _this._nodes);
