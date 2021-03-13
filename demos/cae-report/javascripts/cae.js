@@ -242,6 +242,7 @@ CAE_report.prototype._createViewer = function (modelName, models, containerId) {
             var color = new Communicator.Color(0, 0, 0);
             _this._viewer.getView().setBackgroundColor(color, color);
             if (_this._defaultCamera != undefined) {
+                console.log(_this._defaultCamera);
                 _this._viewer.getView().setCamera(Communicator.Camera.construct(_this._defaultCamera));
             }
 
@@ -249,15 +250,12 @@ CAE_report.prototype._createViewer = function (modelName, models, containerId) {
         }
         
         function modelStructureReadyFunc() {
-            console.log("structure ready");
             ColorContour(_this._viewer, 25, 400);
             _this._viewer.getView().setPointSize(0, Communicator.PointSizeUnit.ScreenPixels);
         }
 
         function loadModel() {
-            console.log("load model");
             _this._viewer.model.clear().then(() => {
-                console.log("model loaded");
                 const modelNodeId = _this._viewer.model.createNode(null, modelName);
                 _this._viewer.model.loadSubtreeFromScsFile(modelNodeId, "/data/" + modelName + ".scs")
                     .then(() => {
@@ -269,7 +267,7 @@ CAE_report.prototype._createViewer = function (modelName, models, containerId) {
         
         _this._viewer.setCallbacks({
             sceneReady: sceneReadyFunc,
-            modelStructureReady: function() {},
+            // modelStructureReady: function() {},
         });
         
         var tt = new Tooltip(_this._viewer, _this._nodes);

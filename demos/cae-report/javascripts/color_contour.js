@@ -54,9 +54,6 @@ function ColorContour(viewer, width, height) {
 
     model.createMesh(meshData).then(function (meshId) {
         var meshInstanceData = new Communicator.MeshInstanceData(meshId);
-        console.log(model);
-        console.log("meshid="+meshId);
-        console.log(meshInstanceData);
         model.createMeshInstance(meshInstanceData).then(function (instanceId) {
             viewer.getModel().setInstanceModifier(Communicator.InstanceModifier.IgnoreLighting, [instanceId], true);
             overlayMgr.addNodes(this._overlayId, [instanceId]);
