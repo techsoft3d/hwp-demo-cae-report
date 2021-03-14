@@ -3,9 +3,7 @@ const createViewer = (modelName, models, containerId, hwp_version) => {
         const viewer = new Communicator.WebViewer({
             containerId: containerId,
             endpointUri: "/data/"+ modelName +".scs",
-            // model: modelName,
             boundingPreviewMode: "none",
-            enginePath: HWP_ENGINE_PATH
         });
 
         resolve(viewer);
