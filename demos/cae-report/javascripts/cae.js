@@ -29,7 +29,7 @@ CAE_report.prototype._loadParameters = function (modelName) {
     var _this = this;
     
     return new Promise(function (resolve, reject) {
-        var fileName = "/demos/cae-report/json/" + _this._modelName + ".json";
+        var fileName = "./demos/cae-report/json/" + _this._modelName + ".json";
         $.get(fileName).done(function(data, textStatus, jqXHR){
             $.getJSON(fileName, function (data) {
                 if (data.header) {
