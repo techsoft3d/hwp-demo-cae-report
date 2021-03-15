@@ -9,25 +9,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-    <script type="text/javascript" src="/javascripts/google_analytics.js"></script>
-    <script type="text/javascript" src="/javascripts/communicator_scripts/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery-ui-1.9.2.custom.js"></script>
-    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascripts/google_analytics.js"></script>
+    <script type="text/javascript" src="javascripts/communicator_scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery-ui-1.9.2.custom.js"></script>
+    <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="/javascripts/hoops_web_viewer.js?v=2021.0.0"></script>
-    <script type="text/javascript" src="/javascripts/communicator_scripts/web_viewer_ui.js?v=2021.0.0" id="hwvUI"></script>
+    <script type="text/javascript" src="javascripts/hoops_web_viewer.js?v=2021.0.0"></script>
+    <script type="text/javascript" src="javascripts/communicator_scripts/web_viewer_ui.js?v=2021.0.0" id="hwvUI"></script>
 
-    <script type="module" src="/demos/cae-report/javascripts/cae.js?v=1374a67"></script>
-    <script type="text/javascript" src="/demos/cae-report/javascripts/operators.js?v=1374a67"></script>
-    <script type="text/javascript" src="/demos/cae-report/javascripts/color_contour.js?v=1374a67"></script>
+    <script type="module" src="demos/cae-report/javascripts/cae.js?v=1374a67"></script>
+    <script type="text/javascript" src="demos/cae-report/javascripts/operators.js?v=1374a67"></script>
+    <script type="text/javascript" src="demos/cae-report/javascripts/color_contour.js?v=1374a67"></script>
 
-    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/jquery-ui-1.9.2.custom.min.css">
-    <link rel="stylesheet" href="/demos/cae-report/stylesheets/custom.css">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/jquery-ui-1.9.2.custom.min.css">
+    <link rel="stylesheet" href="demos/cae-report/stylesheets/custom.css">
 
     <script type="module">
-        import CAE_report from '/demos/cae-report/javascripts/cae.js';
+        import CAE_report from './demos/cae-report/javascripts/cae.js';
 
         const CAEViewer = new CAE_report();
         CAEViewer.start("con-rod");
@@ -42,7 +43,7 @@
             <div class="col-md-12">
                 <table class="header">
                     <tr>
-                        <td rowspan=3 width="30%"><img id="logoImg" src="/demos/cae-report/images/logo.png" width="100%"
+                        <td rowspan=3 width="30%"><img id="logoImg" src="demos/cae-report/images/logo.png" width="100%"
                                 height="auto"></td>
                         <td rowspan=3 width="40%" align="center" style="font-size : 24px; font-weight: bolder">Analysis
                             Report</td>
@@ -145,7 +146,7 @@
                         <td colspan=3 height="5"></td>
                     </tr>
                     <tr>
-                        <td colspan=3><img src="/demos/cae-report/images/graph.png" width="100%" height="auto"></td>
+                        <td colspan=3><img src="demos/cae-report/images/graph.png" width="100%" height="auto"></td>
                     </tr>
                 </table>
             </div>

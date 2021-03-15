@@ -1,4 +1,4 @@
-import createViewer from '/javascripts/common/create_viewer.js';
+import createViewer from '../../../javascripts/common/create_viewer.js';
 
 export default function CAE_report (language) {
     this._viewer;
