@@ -50,13 +50,18 @@
 
     <p></p>
 
-    <iframe style="position:absolute; right:0; z-index: 2;height: auto; width: 350px;" allow="fullscreen;" src="https://www.youtube.com/embed/wUmQxnLXHA4"></iframe>
+    <iframe id="ytiframe" style="position:absolute; right:0; z-index: 2;height: auto; width: 350px;" allow="fullscreen;" src="https://www.youtube.com/embed/wUmQxnLXHA4"></iframe>
 
-    <script>    //removing iframe if the screen resolution is too small, implying that it is being viewed on a phone 
-        if(window.innerWidth <= 800 && window.innerHeight <= 600) {
-            var ytiframe = document.getElementById('ytiframe');
-            ytiframe.style.display = "none";
-       }
+    <script>    //removing iframe if detected on mobile device  
+        const detectDeviceType = () =>
+            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+                ? 'Mobile'
+                : 'Desktop';
+
+            if(detectDeviceType() == 'Mobile'){
+                var ytiframe = document.getElementById('ytiframe');
+                ytiframe.style.display = "none";
+            }
     </script>
 
     <div id="mainContainer" class="container" style="background-color :#232323">
