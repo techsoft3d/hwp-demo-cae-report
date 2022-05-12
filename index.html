@@ -49,7 +49,16 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <p></p>
-    <iframe style="position:absolute; right:0" src="https://www.youtube.com/embed/wUmQxnLXHA4"></iframe>
+
+    <iframe style="position:absolute; right:0; z-index: 2;height: auto; width: 350px;" allow="fullscreen;" src="https://www.youtube.com/embed/wUmQxnLXHA4"></iframe>
+
+    <script>    //removing iframe if the screen resolution is too small, implying that it is being viewed on a phone 
+        if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+            var ytiframe = document.getElementById('ytiframe');
+            ytiframe.style.display = "none";
+       }
+    </script>
+
     <div id="mainContainer" class="container" style="background-color :#232323">
         <div class="row">
             <div class="col-md-12">
