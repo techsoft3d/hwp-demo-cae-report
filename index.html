@@ -3,13 +3,16 @@
 
 <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PB9P4KS');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PB9P4KS');</script>
     <!-- End Google Tag Manager -->
-    
+
     <title>
         CAE Analysis Report | HOOPS Web Viewer
     </title>
@@ -22,8 +25,10 @@
     <script type="text/javascript" src="javascripts/jquery-ui-1.9.2.custom.js"></script>
     <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="javascripts/hoops_web_viewer.js?v=2021.0.0"></script>
-    <script type="text/javascript" src="javascripts/communicator_scripts/web_viewer_ui.js?v=2021.0.0" id="hwvUI"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/techsoft3d/hoops-web-viewer@2021.0.0/hoops_web_viewer.js"></script>
+    <script type="text/javascript" src="javascripts/communicator_scripts/web_viewer_ui.js?v=2021.0.0"
+        id="hwvUI"></script>
 
     <script type="module" src="demos/cae-report/javascripts/cae.js?v=1374a67"></script>
     <script type="text/javascript" src="demos/cae-report/javascripts/operators.js?v=1374a67"></script>
@@ -44,13 +49,14 @@
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB9P4KS"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB9P4KS" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <p></p>
 
-    <iframe id="ytiframe" style="position:absolute; right:0; z-index: 2;height: auto; width: 350px;" allow="fullscreen;" src="https://www.youtube.com/embed/wUmQxnLXHA4"></iframe>
+    <iframe id="ytiframe" style="position:absolute; right:0; z-index: 2;height: auto; width: 350px;" allow="fullscreen;"
+        src="https://www.youtube.com/embed/wUmQxnLXHA4"></iframe>
 
     <script>    //removing iframe if detected on mobile device  
         const detectDeviceType = () =>
@@ -58,10 +64,10 @@
                 ? 'Mobile'
                 : 'Desktop';
 
-            if(detectDeviceType() == 'Mobile'){
-                var ytiframe = document.getElementById('ytiframe');
-                ytiframe.style.display = "none";
-            }
+        if (detectDeviceType() == 'Mobile') {
+            var ytiframe = document.getElementById('ytiframe');
+            ytiframe.style.display = "none";
+        }
     </script>
 
     <div id="mainContainer" class="container" style="background-color :#232323">
